@@ -6,11 +6,11 @@ export default class ConvidadosController{
       return response.json(await db('convidados').where(request.body).orderBy('id'));
     }
 
-    if (request.query.id ==null){
+    if (request.query.id == null){
       return response.json(await db('convidados').select('*').orderBy('id'));
     }
     
-    const convidado = await db('convidados').where('id', request.query.id).first();
+    const convidado = await db('convidados').where('idexterno', request.query.id).first();
     if (!convidado) {
       return { mensagem: 'Convidado não encontrado' };
     }
@@ -32,7 +32,7 @@ export default class ConvidadosController{
  async responder(request: Request,response: Response){
 
   await db('convidados')
-  .where('id', request.query.id)
+  .where('idexterno', request.query.id)
   .update({
     confirmacao1: request.query.confirmacao
   });
@@ -47,7 +47,7 @@ export default class ConvidadosController{
     faixapreco = 2;
   }
   await db('convidados')
-  .where('id', request.query.id)
+  .where('idexterno', request.query.id)
   .update({
     confirmacao1: request.query.confirmacao,
     idade: request.query.idade,

@@ -8,20 +8,15 @@ const db = require('knex')({
     port: process.env.DB_PORT,              // Porta padrão do Postgres
     user: process.env.DB_USER,     // Usuário do banco
     password: process.env.DB_PASSWORD,   // Senha do usuário
-    database: process.env.DB_DATABASE, // Nome da database
-    ssl: { 
+    database: process.env.DB_DATABASE
+    ,ssl: { 
         rejectUnauthorized: true,
         ca: fs.readFileSync('./src/databases/global-bundle.pem').toString()
     }
 
-    // host: '127.0.0.1',       // Endereço do servidor
-    // port: 5432,              // Porta padrão do Postgres
-    // user: 'postgres',     // Usuário do banco
-    // password: 'teste123',   // Senha do usuário
-    // database: 'postgres' // Nome da database
+    
   },
   pool: { min: 2, max: 10 } // Gerenciamento do pool de conexões
 });
 
 export default db;
-

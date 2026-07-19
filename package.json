@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "start": "tsnd --transpile-only --ignore-watch node_modules --respawn  src/server.ts "
   },
   "keywords": [],
@@ -14,6 +15,7 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "helmet": "^8.2.0",
     "knex": "^3.2.10",
     "pg": "^8.21.0"
   },
